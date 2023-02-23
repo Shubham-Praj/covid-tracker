@@ -1,27 +1,18 @@
+import { Link, Route, Routes } from "react-router-dom";
 import "./App.css";
 import TopNav from "./components/TopNav";
+import CovidDataPage from "./pages/CovidData/CovidDataPage";
 
 function App() {
   return (
     <>
       <TopNav />
 
-      <div className="App">
-        <header className="App-header">
-          <img className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
-      </div>
+      <Routes>
+        <Route path="/" element={<CovidDataPage />} />
+        <Route path="/vaccine" element={<div>I am vaccine page</div>} />
+        <Route path="/news" element={<div>I am news page</div>} />
+      </Routes>
     </>
   );
 }

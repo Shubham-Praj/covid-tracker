@@ -13,8 +13,13 @@ import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
 import AdbIcon from "@mui/icons-material/Adb";
 import logo from "../logo/virus.svg";
+import { Link } from "react-router-dom";
 
-const pages = ["Covid Data", "Vaccine Details", "News"];
+const pages = [
+  { pageName: "Covid Data", pageLink: "/" },
+  { pageName: "Vaccine Details", pageLink: "/vaccine" },
+  { pageName: "News", pageLink: "/news" },
+];
 
 function TopNav() {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
@@ -95,8 +100,10 @@ function TopNav() {
               }}
             >
               {pages.map((page) => (
-                <MenuItem key={page} onClick={handleCloseNavMenu}>
-                  <Typography textAlign="center">{page}</Typography>
+                <MenuItem key={page.pageName} onClick={handleCloseNavMenu}>
+                  <Link to={page.pageLink}>
+                    <Typography textAlign="center">{page.pageName}</Typography>
+                  </Link>
                 </MenuItem>
               ))}
             </Menu>
@@ -131,11 +138,13 @@ function TopNav() {
           >
             {pages.map((page) => (
               <Button
-                key={page}
+                key={page.pageName}
                 onClick={handleCloseNavMenu}
                 sx={{ my: 2, color: "white", display: "block" }}
+                component={Link}
+                to={page.pageLink}
               >
-                {page}
+                {page.pageName}
               </Button>
             ))}
           </Box>
