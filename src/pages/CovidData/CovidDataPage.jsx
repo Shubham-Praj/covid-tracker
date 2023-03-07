@@ -1,8 +1,26 @@
 import { Box } from "@mui/material";
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { authHeader } from "../../services/HeaderService";
 import { CovidDataTable } from "./CovidDataTable";
 
-function CovidDataPage() {
+export const CovidDataPage = () => {
+  const [tableData, setTableData] = useState();
+
+  const getAllWorldData = async () => {
+    const res = await fetch(
+      `${process.env.REACT_APP_COVID_BASE_URL}${process.env.REACT_APP_ALL_COVID_DATA}`,
+      authHeader()
+    );
+
+    const data = await res.json();
+
+    setTableData(data);
+  };
+
+  useEffect(() => {
+    getAllWorldData();
+  }, []);
+
   return (
     <Box sx={{ display: "flex", flexDirection: "column" }}>
       <Box>Filters</Box>
@@ -14,10 +32,8 @@ function CovidDataPage() {
 
       <Box>
         Table
-        <CovidDataTable />
+        <CovidDataTable rows={tableData} />
       </Box>
     </Box>
   );
-}
-
-export default CovidDataPage;
+};

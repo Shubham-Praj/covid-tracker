@@ -1,7 +1,7 @@
 import { Link, Route, Routes } from "react-router-dom";
 import "./App.css";
 import TopNav from "./components/TopNav";
-import CovidDataPage from "./pages/CovidData/CovidDataPage";
+import { CovidDataPage } from "./pages/CovidData/CovidDataPage";
 import NewPage from "./pages/News/NewPage";
 
 function App() {
