@@ -1,7 +1,9 @@
-import { Box } from "@mui/material";
+import { Box, Grid } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import { authHeader } from "../../services/HeaderService";
 import { CovidDataTable } from "./CovidDataTable";
+import DataCards from "./DataCards";
+import { DataChart } from "./DataChart";
 
 export const CovidDataPage = () => {
   const [tableData, setTableData] = useState();
@@ -23,12 +25,31 @@ export const CovidDataPage = () => {
 
   return (
     <Box sx={{ display: "flex", flexDirection: "column" }}>
-      <Box>Filters</Box>
-
-      <Box sx={{ display: "flex", flexDirection: "row" }}>
-        <Box>Cards Section</Box>
-        <Box>Chart</Box>
+      <Box>
+        Filters
+        <Box
+          sx={{
+            display: "flex",
+            width: "100%",
+            height: "50%",
+            backgroundColor: "red",
+          }}
+        >
+          sdsds
+        </Box>
       </Box>
+
+      <Grid container spacing={2}>
+        <Grid item xs={6}>
+          <DataCards />
+        </Grid>
+        <Grid item xs={6}>
+          <Box sx={{ width: "50%", height: "40vh" }}>
+            Chart
+            <DataChart />
+          </Box>
+        </Grid>
+      </Grid>
 
       <Box>
         Table

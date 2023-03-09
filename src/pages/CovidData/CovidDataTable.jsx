@@ -15,7 +15,7 @@ export const CovidDataTable = (props) => {
   const formatter = Intl.NumberFormat("en", { notation: "compact" });
 
   const [page, setPage] = useState(0);
-  const [rowsPerPage, setRowsPerPage] = useState(15);
+  const [rowsPerPage, setRowsPerPage] = useState(25);
 
   const handleChangePage = (event, newPage) => {
     setPage(newPage);
@@ -39,8 +39,8 @@ export const CovidDataTable = (props) => {
                 <TableCell align="center">Total Recovered</TableCell>
                 <TableCell align="center">Active Cases</TableCell>
                 <TableCell align="center">Total Death</TableCell>
-                <TableCell align="center">Total Cases</TableCell>
-                <TableCell align="center">Total Cases</TableCell>
+                {/* <TableCell align="center">Total Cases</TableCell>
+                <TableCell align="center">Total Cases</TableCell> */}
               </TableRow>
             </TableHead>
             <TableBody>
@@ -57,7 +57,7 @@ export const CovidDataTable = (props) => {
                 >
                   <TableCell align="center">{row.Continent}</TableCell>
                   <TableCell align="center">{row.Country} </TableCell>
-                  <TableCell>
+                  {/* <TableCell>
                     <img
                       // src={`https://countryflagsapi.com/png/${row.ThreeLetterSymbol}`}
                       
@@ -66,7 +66,7 @@ export const CovidDataTable = (props) => {
                       width="100"
                       height="100"
                     />
-                  </TableCell>
+                  </TableCell> */}
                   <TableCell align="center">
                     {formatter.format(row.TotalCases)}
                   </TableCell>
@@ -83,7 +83,7 @@ export const CovidDataTable = (props) => {
               ))}
             </TableBody>
 
-            <TableFooter>
+            <TableFooter align="center">
               <TableRow>
                 <TablePagination
                   rowsPerPageOptions={[]}
