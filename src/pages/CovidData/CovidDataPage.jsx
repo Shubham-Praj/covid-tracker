@@ -6,7 +6,13 @@ import DataCards from "./DataCards";
 import { DataChart } from "./DataChart";
 
 export const CovidDataPage = () => {
+  const [cardData, setCardData] = useState(null);
+  const [globalDetails, setGlobalDetails] = useState(null);
   const [tableData, setTableData] = useState();
+
+  const cardDataHandler = (selectedData) => {
+    setCardData(selectedData);
+  };
 
   const getAllWorldData = async () => {
     const res = await fetch(
@@ -16,6 +22,10 @@ export const CovidDataPage = () => {
 
     const data = await res.json();
 
+    data.shift();
+    setGlobalDetails(data[0]);
+    setCardData(data[0]);
+    data.shift();
     setTableData(data);
   };
 
@@ -41,19 +51,18 @@ export const CovidDataPage = () => {
 
       <Grid container spacing={2}>
         <Grid item xs={6}>
-          <DataCards />
+          <DataCards cardData={cardData} />
         </Grid>
         <Grid item xs={6}>
           <Box sx={{ width: "50%", height: "40vh" }}>
             Chart
-            <DataChart />
+            <DataChart rows={tableData.splice(0, 20)} />
           </Box>
         </Grid>
       </Grid>
 
       <Box>
-        Table
-        <CovidDataTable rows={tableData} />
+        <CovidDataTable rows={tableData} cardDataHandler={cardDataHandler} />
       </Box>
     </Box>
   );

@@ -10,7 +10,7 @@ import Paper from "@mui/material/Paper";
 import { CardMedia, TableFooter, TablePagination } from "@mui/material";
 
 export const CovidDataTable = (props) => {
-  let { rows } = { ...props };
+  let { rows, cardDataHandler } = { ...props };
 
   const formatter = Intl.NumberFormat("en", { notation: "compact" });
 
@@ -29,7 +29,7 @@ export const CovidDataTable = (props) => {
   return (
     <>
       <Box sx={{ m: 2 }}>
-        <TableContainer component={Paper} elevation={2} sx={{ maxHeight: 250 }}>
+        <TableContainer component={Paper} elevation={2} sx={{ maxHeight: 300 }}>
           <Table stickyHeader aria-label="simple table">
             <TableHead>
               <TableRow>
@@ -53,20 +53,12 @@ export const CovidDataTable = (props) => {
               )?.map((row) => (
                 <TableRow
                   key={row.id}
+                  hover
                   sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
+                  onClick={() => cardDataHandler(row)}
                 >
                   <TableCell align="center">{row.Continent}</TableCell>
                   <TableCell align="center">{row.Country} </TableCell>
-                  {/* <TableCell>
-                    <img
-                      // src={`https://countryflagsapi.com/png/${row.ThreeLetterSymbol}`}
-                      
-                      src={"https://countryflagsapi.com/png/ind" + ".png"}
-                      // src={"https://flagcdn.com/16x12/in" + ".png"}
-                      width="100"
-                      height="100"
-                    />
-                  </TableCell> */}
                   <TableCell align="center">
                     {formatter.format(row.TotalCases)}
                   </TableCell>
