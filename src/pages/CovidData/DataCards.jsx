@@ -15,12 +15,12 @@ export default function DataCards(props) {
   return (
     <>
       <Typography
-        variant="h6"
+        variant="h4"
         sx={{
           display: "flex",
-          width: "100%",
+          justifyContent: "center",
           alignItems: "center",
-          m: 2,
+          my: 3,
         }}
       >
         {cardData?.Continent} <PlayArrowIcon /> {cardData?.Country}
@@ -29,7 +29,6 @@ export default function DataCards(props) {
       <Box
         sx={{
           display: "flex",
-          width: "100%",
           justifyContent: "space-evenly",
           m: 2,
         }}
@@ -56,6 +55,13 @@ export default function DataCards(props) {
           <Typography variant="subtitle1">Total Deaths</Typography>
           <Typography variant="h6">
             {formatter.format(cardData?.TotalDeaths)}
+          </Typography>
+        </PaperItem>
+
+        <PaperItem elevation={3}>
+          <Typography variant="subtitle1">Critical Cases</Typography>
+          <Typography variant="h6">
+            {formatter.format(cardData?.Serious_Critical)}
           </Typography>
         </PaperItem>
       </Box>

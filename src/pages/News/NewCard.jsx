@@ -16,13 +16,13 @@ function NewsCard(props) {
   return (
     <>
       <Link to={news.link} target="_blank" style={{ textDecoration: "none" }}>
-        <Card sx={{ maxWidth: 500 }}>
+        <Card>
           <CardActionArea>
             <CardMedia
               component="img"
-              height="140"
+              height="250"
               image={news?.urlToImage}
-              alt="green iguana"
+              alt="story"
             />
             <CardContent>
               <Typography gutterBottom variant="h5" component="div">

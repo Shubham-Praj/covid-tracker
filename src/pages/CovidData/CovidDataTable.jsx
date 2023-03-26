@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import Box from "@mui/material/Box";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
@@ -8,12 +8,9 @@ import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import {
-  Button,
-  CardMedia,
   InputAdornment,
   MenuItem,
   Select,
-  styled,
   TableFooter,
   TablePagination,
   TextField,
@@ -53,7 +50,7 @@ export const CovidDataTable = (props) => {
 
   return (
     <>
-      <Box sx={{ m: 2 }}>
+      <Box sx={{ m: 2, maxHeight: "100%" }}>
         <Paper
           elevation={2}
           sx={{ display: "flex", justifyContent: "flex-end" }}
@@ -97,7 +94,12 @@ export const CovidDataTable = (props) => {
             />
           </Box>
         </Paper>
-        <TableContainer component={Paper} elevation={2} sx={{ maxHeight: 250 }}>
+
+        <TableContainer
+          component={Paper}
+          elevation={2}
+          // sx={{ maxHeight: "50vh" }}
+        >
           <Table stickyHeader aria-label="simple table">
             <TableHead>
               <TableRow>

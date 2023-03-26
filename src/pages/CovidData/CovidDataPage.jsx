@@ -47,14 +47,14 @@ export const CovidDataPage = () => {
   return (
     <Box sx={{ display: "flex", flexDirection: "column" }}>
       <Grid container spacing={2}>
-        <Grid item xs={6}>
+        <Grid item xs={12}>
           <DataCards cardData={cardData} />
         </Grid>
-        <Grid item xs={6}>
+        {/* <Grid item xs={6}>
           <Box sx={{ width: "100%", height: "40vh" }}>
             <DataChart rows={filteredTableData} />
           </Box>
-        </Grid>
+        </Grid> */}
       </Grid>
 
       <Box>
